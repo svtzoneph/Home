@@ -22,12 +22,12 @@
 
     .navbar h2 {
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
 
     .nav-links a {
@@ -35,7 +35,6 @@
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
-      font-size: 1rem;
     }
 
     .nav-links a:hover {
@@ -80,7 +79,28 @@
       color: #aaaaaa;
       font-size: 0.9rem;
     }
-    
+
+    /* Phone-style notification */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #323232;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      font-size: 0.95rem;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -105,8 +125,25 @@
       <p>SEVENTEEN is making their long-awaited comeback this year with a brand-new concept album titled <em>HAPPY BURSTDAY</em>. Official teaser drops May 20!</p>
       <small>Posted: May 10, 2025</small>
     </div>
-
   </div>
+
+  <!-- Phone-style Notification -->
+  <div id="phoneNotification" class="notification">
+    🔔 New announcement: "HAPPY BURSTDAY" teaser drops May 20!
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const notification = document.getElementById('phoneNotification');
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 1000); // Show after 1 second
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 7000); // Hide after 7 seconds
+    });
+  </script>
 
 </body>
 </html>
