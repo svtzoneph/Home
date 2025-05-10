@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live | SEVENTEEN ZONE PH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #ffffff;
+    }
+
+    .navbar {
+      background-color: #111;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00bcd4;
+    }
+
+    .container {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+ <div class="navbar">
+    <h2>SEVENTEEN ZONE PH</h2>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="picture.html">PICTURE</a>
+      <a href="announcement.html">ANNOUNCEMENT</a>
+      <a href="about.html">ABOUT SEVENTEEN</a>
+      <a href="live.html">LIVE</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>LIVE STREAM</h1>
+    <div class="video-wrapper">
+      <!-- Replace the YouTube embed URL below with your actual live stream -->
+     <iframe src="https://ok.ru/videoembed/9430840254168" width="900" height="450" frameborder="0" allowfullscreen></iframe>
+        
+    </div>
+  </div>
+
+</body>
+</html>
