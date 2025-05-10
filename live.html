@@ -107,6 +107,26 @@
       text-align: center;
       font-size: 0.8rem;
     }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .search-input {
+      width: 300px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      background-color: #222;
+      color: white;
+    }
+
+    .search-input::placeholder {
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -125,14 +145,19 @@
 
   <div class="container">
     <div class="video-wrapper">
-      <iframe src="https://ok.ru/videoembed/9430840254168" width="900" height="500" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://ok.ru/videoembed/9430840254168" allowfullscreen></iframe>
     </div>
     <div class="video-title">No Service</div>
-    
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search VOD...">
+    </div>
+
     <!-- VOD SECTION -->
     <div class="vod-section">
       <div class="vod-title">VOD</div>
-      <div class="vod-grid">
+      <div class="vod-grid" id="vodGrid">
         <!-- VOD 1 -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
@@ -203,5 +228,17 @@
     </div>
   </div>
 
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const filter = searchInput.value.toLowerCase();
+      const vods = document.querySelectorAll('.vod-video');
+
+      vods.forEach(vod => {
+        const title = vod.querySelector('.vod-video-title').textContent.toLowerCase();
+        vod.style.display = title.includes(filter) ? 'flex' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
