@@ -43,10 +43,13 @@
     }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
       padding: 20px;
+    }
+
+    .gallery-set {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
     }
 
     .gallery img {
@@ -55,10 +58,18 @@
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.3s ease;
+      border: 2px solid #444; /* Divider for each image */
     }
 
     .gallery img:hover {
       transform: scale(1.1);
+    }
+
+    .divider {
+      border: none;
+      height: 1px;
+      background-color: #444; /* Color of the divider */
+      margin: 30px 0; /* Adjust spacing around the divider */
     }
 
     .lightbox {
@@ -90,7 +101,6 @@
       padding: 5px 10px;
       cursor: pointer;
     }
-
   </style>
 </head>
 <body>
@@ -107,13 +117,30 @@
   </div>
 
   <div class="gallery">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/2aa86f6c_original.jpg" alt="Picture 1" onclick="openLightbox(this)">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/b74d5d13_original.jpg" alt="Picture 2" onclick="openLightbox(this)">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/e66e1641_original.jpg" alt="Picture 3" onclick="openLightbox(this)">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/e72a7c2d_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/f25a2b0c_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
-    <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/f25a2b0c_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
-    <!-- Add more images here -->
+    <!-- First set of pictures -->
+    <div class="gallery-set">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/6dccb7b5_original.jpg" alt="Picture 1" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/8680c823_original.jpg" alt="Picture 2" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/2aa86f6c_original.jpg" alt="Picture 3" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/fd74d21a_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/f25a2b0c_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/e72a7c2d_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/07b1e824_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/b74d5d13_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/e66e1641_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/65b44dcf_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/5bb701a7_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43hb7btv3/614c2f7b_original.jpg" alt="Picture 4" onclick="openLightbox(this)">
+    </div>
+
+    <!-- Divider between picture sets -->
+    <hr class="divider">
+
+    <!-- Second set of pictures -->
+    <div class="gallery-set">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/f25a2b0c_original.jpg" alt="Picture 5" onclick="openLightbox(this)">
+      <img src="https://assets.onecompiler.app/432zqmf3k/43haq3bpn/f25a2b0c_original.jpg" alt="Picture 6" onclick="openLightbox(this)">
+    </div>
   </div>
 
   <div class="lightbox" id="lightbox">
