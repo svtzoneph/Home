@@ -13,7 +13,6 @@
       background-size: cover;
     }
 
-    /* Optional dark overlay for better readability */
     body::before {
       content: "";
       position: fixed;
@@ -60,7 +59,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 140px);
       padding: 20px;
     }
 
@@ -68,6 +67,13 @@
       font-size: 2.8rem;
       margin-bottom: 20px;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .welcome-message {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      max-width: 700px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -86,6 +92,10 @@
 
   <div class="container">
     <h1>WELCOME TO SEVENTEEN ZONE PH</h1>
+    <div class="welcome-message">
+      This is your ultimate hub for all things SEVENTEEN — from live streams and tour VODs to announcements, photos, and more. <br>
+      Stay updated, relive unforgettable performances, and celebrate every moment with fellow CARATs!
+    </div>
   </div>
 
   <script src="script.js"></script>
