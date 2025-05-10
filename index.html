@@ -2,17 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SEVENTEEN ZONE PH</title>
+  <title>Home | SEVENTEEN ZONE PH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #1e1e1e, #2c2c2c);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+      background-color: #111;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00bcd4;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: calc(100vh - 70px);
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .logout-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background: #e74c3c;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #c0392b;
+    }
+  </style>
 </head>
 <body onload="checkAuth()">
+
+  <div class="navbar">
+    <h2>SEVENTEEN ZONE PH</h2>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="picture.html">PICTURE</a>
+      <a href="announcement.html">ANNOUNCEMENT</a>
+      <a href="about.html">ABOUT SEVENTEEN</a>
+      <a href="live.html">LIVE</a>
+    </div>
+  </div>
+
   <div class="container">
     <h1>WELCOME TO SEVENTEEN ZONE PH</h1>
-    <input type="text" placeholder="Enter something here...">
-    <br><br>
-    <button onclick="logout()">Logout</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
