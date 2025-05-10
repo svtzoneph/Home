@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,74 +13,98 @@
       color: white;
     }
 
-    .navbar {
-      background-color: #111;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+```
+.navbar {
+  background-color: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .navbar h2 {
-      margin: 0;
-      font-size: 1.3rem;
-    }
+.navbar h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 15px;
-    }
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-      font-size: 1rem;
-    }
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
 
-    .nav-links a:hover {
-      color: #00bcd4;
-    }
+.nav-links a:hover {
+  color: #00bcd4;
+}
 
-    .container {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+.container {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
 
-    h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 40px;
-    }
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-    .announcement {
-      background: #1f1f1f;
-      border-left: 5px solid #00bcd4;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
+.announcement {
+  background: #1f1f1f;
+  border-left: 5px solid #00bcd4;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
 
-    .announcement h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #00bcd4;
-    }
+.announcement h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #00bcd4;
+}
 
-    .announcement p {
-      margin: 10px 0 0;
-      line-height: 1.6;
-    }
+.announcement p {
+  margin: 10px 0 0;
+  line-height: 1.6;
+}
 
-    .announcement small {
-      display: block;
-      margin-top: 10px;
-      color: #aaaaaa;
-      font-size: 0.9rem;
-    }
+.announcement small {
+  display: block;
+  margin-top: 10px;
+  color: #aaaaaa;
+  font-size: 0.9rem;
+}
+
+/* Phone-style notification */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  font-size: 0.95rem;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
   </style>
 </head>
 <body>
@@ -99,54 +124,47 @@
   <div class="container">
     <h1>Latest Announcements</h1>
 
-    <div class="announcement">
-      <h2>🎉 SEVENTEEN 2025 COMEBACK: NEW ALBUM "HAPPY BURSTDAY" OUT SOON!</h2>
-      <p>SEVENTEEN is making their long-awaited comeback this year with a brand-new concept album titled <em>HAPPY BURSTDAY</em>. Official teaser drops May 20!</p>
-      <small>Posted: May 10, 2025</small>
-    </div>
+```
+<div class="announcement">
+  <h2>🎉 SEVENTEEN 2025 COMEBACK: NEW ALBUM "HAPPY BURSTDAY" OUT SOON!</h2>
+  <p>SEVENTEEN is making their long-awaited comeback this year with a brand-new concept album titled <em>HAPPY BURSTDAY</em>. Official teaser drops May 20!</p>
+  <small>Posted: May 10, 2025</small>
+</div>
+```
 
-    <div class="announcement">
+  </div>
+
+   <div class="announcement">
       <h2>📢 [ANNOUNCEMENT] SEVENTEEN 2025 JAPAN FANMEETING 'HOLIDAY' – SAITAMA SUPER ARENA! 🇯🇵💎</h2>
       <p>CARATs, get ready! SEVENTEEN is set to meet fans at the Saitama Super Arena on May 11, 2025. The event will open at 2:00 PM JST, with the performance starting at 4:00 PM JST.
         For those unable to attend in person, an online live streaming option is available. Tickets can be purchased through the Weverse Shop. 
         Additionally, a Delayed Single-View Streaming of the Saitama show will be available on May 18, 2025, at 11:00 AM JST. </p>
-      <small>Posted: May 10, 2025 10:50 AM</small>
+      <small>Posted: May 10, 2025 10:50 AM </small>
     </div>
   </div>
 
-  <!-- Real Phone-Style Notifications -->
+  <!-- Phone-style Notification -->
+
+  <div id="phoneNotification" class="notification">
+    🔔 New announcement: "HAPPY BURSTDAY" teaser drops May 20!
+  </div>
+
+  <div id="phoneNotification" class="notification">
+    🔔 New announcement: SEVENTEEN 2025 JAPAN FANMEETING 'HOLIDAY' – SAITAMA SUPER ARENA! MAY 11 2025
+  </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Ask for notification permission
-      if ('Notification' in window) {
-        if (Notification.permission === 'granted') {
-          showNotifs();
-        } else if (Notification.permission !== 'denied') {
-          Notification.requestPermission().then(permission => {
-            if (permission === 'granted') {
-              showNotifs();
-            }
-          });
-        }
-      }
+    window.addEventListener('DOMContentLoaded', () => {
+      const notification = document.getElementById('phoneNotification');
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 1000); // Show after 1 second
 
-      function showNotifs() {
-        const options1 = {
-          body: 'Teaser drops May 20!',
-          icon: 'https://upload.wikimedia.org/wikipedia/commons/5/53/SEVENTEEN_Logo.png'
-        };
-        const options2 = {
-          body: 'Fanmeeting @ Saitama Super Arena – May 11!',
-          icon: 'https://upload.wikimedia.org/wikipedia/commons/5/53/SEVENTEEN_Logo.png'
-        };
-
-        new Notification('🎉 HAPPY BURSTDAY COMEBACK!', options1);
-        setTimeout(() => {
-          new Notification('📢 JAPAN FANMEETING ANNOUNCEMENT', options2);
-        }, 5000); // second notification after 5s
-      }
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 7000); // Hide after 7 seconds
     });
   </script>
 
 </body>
-</html>
+</html> CAN YOU ADD REAL PHONE NOTIFICATION?
