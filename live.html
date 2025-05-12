@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Live/VOD | SEVENTEEN ZONE PH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+  <script src="https://unpkg.com/video.js/dist/video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
       margin: 0;
@@ -60,12 +63,6 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    }
-
-    iframe {
-      width: 900px;
-      height: 500px;
-      border: none;
     }
 
     .vod-section {
@@ -128,6 +125,11 @@
     .search-input::placeholder {
       color: #888;
     }
+
+    #my-video {
+      width: 890px !important;
+      height: 450px !important;
+    }
   </style>
 </head>
 <body>
@@ -146,7 +148,10 @@
 
   <div class="container">
     <div class="video-wrapper">
-      <iframe src="//ok.ru/videoembed/9434578427608?" allowfullscreen></iframe>
+      <!-- Replaced OK.ru video with HLS video player -->
+      <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" data-setup='{}'>
+        <source src="http://localhost/hls/stream.m3u8" type="application/x-mpegURL">
+      </video>
     </div>
     <div class="video-title">[RE-WATCH] SEVENTEEN JAPAN FAN MEETING 'HOLIDAY' SAITAMA</div>
 
@@ -159,82 +164,74 @@
     <div class="vod-section">
       <div class="vod-title">VOD</div>
       <div class="vod-grid" id="vodGrid">
-        <!-- VOD 1 -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 1</div>
         </div>
-        <!-- VOD 2 -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/1SB7weoPG7vt305S-m9hnwZ-e99qcTvtd/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 2</div>
         </div>
-        <!-- VOD 3 -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/1TqDVvtSfexTRS-3DEMepxhrktXMVTZbs/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN CARATLAND 2024 DAY 1</div>
         </div>
-        <!-- VOD 4 -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/1entvwxMGnONT2hrm1GPh92n11E7wAxbk/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN CARATLAND 2024 DAY 2</div>
         </div>
-        <!-- VOD 5 -->
         <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1bVVafBhNyxyQbOzQDMXDifOquXrmCcjf/preview" allowfullscreen></iframe>
+          <iframe src="https://drive.google.com/file/d/1bVVafBhNyxyQbOzQDMXDifOquXrmCcjf/preview" allowfullscreen></iframe>
           <div class="vod-video-title">FOLLOW TO JAPAN NISSAN</div>
         </div>
-        <!-- VOD 6 -->
         <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1FDLIiqcLJjdEE05hu9CwoCNV4Jzcm6kW/preview" allowfullscreen></iframe>
+          <iframe src="https://drive.google.com/file/d/1FDLIiqcLJjdEE05hu9CwoCNV4Jzcm6kW/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN RIGHT HERE IN GOYANG DAY 1</div>
-        </div> 
-        <!-- VOD 7 -->
+        </div>
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/19OKJTGyABPYDW7tU0uLHvXVTjpUMpTPo/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN RIGHT HERE IN GOYANG DAY 2</div>
-        </div> 
-        <!-- VOD 8 -->
+        </div>
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/1ERCTHgHft7MxlAhqMqahqdIzIE0ZfM86/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR FOLLOW AGAIN DISNEY+</div>
-       </div> 
-       <!-- VOD 9 -->
+        </div>
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/1i2ua7pFLDlEun5WIVBWfPcyM6PeJPA4P/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN WORLD TOUR JAPAN OSAKA</div>
-       </div> 
-       <!-- VOD 10 -->
-       <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1vmnpWw2H9NGhAhslS1oFcboKvb8UwNtV/preview" allowfullscreen></iframe>
-         <div class="vod-video-title">SEVENTEEN RIGHT HERE WORLD TOUR FUKUOKU JAPAN</div>
-       </div> 
-       <!-- VOD 11 -->
-       <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1lFUL16mHSRAWtr3sxZmnVuHHqdkeYRND/preview" allowfullscreen></iframe>
-         <div class="vod-video-title">SEVETEEN WORLD TOUR BE THE SUN IN SEOUL DAY 1</div>
-       </div> 
-       <!-- VOD 12 -->
-       <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
-         <div class="vod-video-title">[MAIN] 2025 SVT 8TH FAN MEETING SEVENTEEN IN CARAT LAND DAY 1</div>
-       </div> 
-      <!-- VOD 13 -->
-       <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1iABT5RG-6XiT7ysFexdaNa3m-KAtkhBW/preview" allowfullscreen></iframe>
-         <div class="vod-video-title">[MULTI-VIEW] 2025 SVT 9TH FAN MEETING SEVENTEEN in CARAT LAND DAY 2</div>
-       </div> 
-
+        </div>
+        <div class="vod-video">
+          <iframe src="https://drive.google.com/file/d/1vmnpWw2H9NGhAhslS1oFcboKvb8UwNtV/preview" allowfullscreen></iframe>
+          <div class="vod-video-title">SEVENTEEN RIGHT HERE WORLD TOUR FUKUOKU JAPAN</div>
+        </div>
+        <div class="vod-video">
+          <iframe src="https://drive.google.com/file/d/1lFUL16mHSRAWtr3sxZmnVuHHqdkeYRND/preview" allowfullscreen></iframe>
+          <div class="vod-video-title">SEVETEEN WORLD TOUR BE THE SUN IN SEOUL DAY 1</div>
+        </div>
+        <div class="vod-video">
+          <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
+          <div class="vod-video-title">[MAIN] 2025 SVT 8TH FAN MEETING SEVENTEEN IN CARAT LAND DAY 1</div>
+        </div>
+        <div class="vod-video">
+          <iframe src="https://drive.google.com/file/d/1iABT5RG-6XiT7ysFexdaNa3m-KAtkhBW/preview" allowfullscreen></iframe>
+          <div class="vod-video-title">[MULTI-VIEW] 2025 SVT 9TH FAN MEETING SEVENTEEN in CARAT LAND DAY 2</div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    var player = videojs('my-video');
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource('http://localhost/hls/stream.m3u8');
+      hls.attachMedia(player.tech().el());
+    }
+
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function () {
       const filter = searchInput.value.toLowerCase();
       const vods = document.querySelectorAll('.vod-video');
-
       vods.forEach(vod => {
         const title = vod.querySelector('.vod-video-title').textContent.toLowerCase();
         vod.style.display = title.includes(filter) ? 'flex' : 'none';
