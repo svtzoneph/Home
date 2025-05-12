@@ -148,9 +148,9 @@
 
   <div class="container">
     <div class="video-wrapper">
-      <!-- Replaced OK.ru video with HLS video player -->
-      <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" data-setup='{}'>
-        <source src="http://localhost/hls/stream.m3u8" type="application/x-mpegURL">
+      <!-- Updated Live HLS Player -->
+      <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="890" height="450">
+        <source src="http://192.168.1.10/hls/stream.m3u8" type="application/x-mpegURL">
       </video>
     </div>
     <div class="video-title">[RE-WATCH] SEVENTEEN JAPAN FAN MEETING 'HOLIDAY' SAITAMA</div>
@@ -164,6 +164,7 @@
     <div class="vod-section">
       <div class="vod-title">VOD</div>
       <div class="vod-grid" id="vodGrid">
+        <!-- VOD ENTRIES (unchanged, all 13 kept) -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 1</div>
@@ -224,7 +225,7 @@
     var player = videojs('my-video');
     if (Hls.isSupported()) {
       var hls = new Hls();
-      hls.loadSource('http://localhost/hls/stream.m3u8');
+      hls.loadSource('http://192.168.1.10/hls/stream.m3u8');
       hls.attachMedia(player.tech().el());
     }
 
