@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self' https://drive.google.com https://ok.ru;
-    script-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
     style-src 'self' 'unsafe-inline';
     frame-src https://drive.google.com https://ok.ru;
     object-src 'none';
@@ -121,6 +121,30 @@
     .search-input::placeholder {
       color: #888;
     }
+    /* Visit counter styles */
+    .visit-counter {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 188, 212, 0.8);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      z-index: 1000;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 950px) {
+      video, iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+      }
+      .vod-video {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -138,6 +162,11 @@
   </div>
 
   <div class="container">
+    <!-- Visit Counter -->
+    <div class="visit-counter">
+      <span id="visitCount">100</span> visitors
+    </div>
+
     <div class="video-wrapper">
       <iframe
         id="liveVideo"
@@ -164,55 +193,55 @@
     <div class="vod-section">
       <div class="vod-title">VOD</div>
       <div class="vod-grid" id="vodGrid">
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen tour again follow to incheon day 1">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 1</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen tour again follow to incheon day 2">
           <iframe src="https://drive.google.com/file/d/1SB7weoPG7vt305S-m9hnwZ-e99qcTvtd/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 2</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen caratland 2024 day 1">
           <iframe src="https://drive.google.com/file/d/1TqDVvtSfexTRS-3DEMepxhrktXMVTZbs/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN CARATLAND 2024 DAY 1</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen caratland 2024 day 2">
           <iframe src="https://drive.google.com/file/d/1entvwxMGnONT2hrm1GPh92n11E7wAxbk/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN CARATLAND 2024 DAY 2</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="follow to japan nissan">
           <iframe src="https://drive.google.com/file/d/1bVVafBhNyxyQbOzQDMXDifOquXrmCcjf/preview" allowfullscreen></iframe>
           <div class="vod-video-title">FOLLOW TO JAPAN NISSAN</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen right here in goyang day 1">
           <iframe src="https://drive.google.com/file/d/1FDLIiqcLJjdEE05hu9CwoCNV4Jzcm6kW/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN RIGHT HERE IN GOYANG DAY 1</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen right here in goyang day 2">
           <iframe src="https://drive.google.com/file/d/19OKJTGyABPYDW7tU0uLHvXVTjpUMpTPo/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN RIGHT HERE IN GOYANG DAY 2</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen tour follow again disney+">
           <iframe src="https://drive.google.com/file/d/1ERCTHgHft7MxlAhqMqahqdIzIE0ZfM86/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR FOLLOW AGAIN DISNEY+</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen world tour japan osaka">
           <iframe src="https://drive.google.com/file/d/1i2ua7pFLDlEun5WIVBWfPcyM6PeJPA4P/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN WORLD TOUR JAPAN OSAKA</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seventeen right here world tour fukuoku japan">
           <iframe src="https://drive.google.com/file/d/1vmnpWw2H9NGhAhslS1oFcboKvb8UwNtV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN RIGHT HERE WORLD TOUR FUKUOKU JAPAN</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="seveteen world tour be the sun in seoul day 1">
           <iframe src="https://drive.google.com/file/d/1lFUL16mHSRAWtr3sxZmnVuHHqdkeYRND/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVETEEN WORLD TOUR BE THE SUN IN SEOUL DAY 1</div>
         </div>
-        <div class="vod-video">
-         <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
+        <div class="vod-video" data-search="main 2025 svt 8th fan meeting seventeen in carat land day 1">
+          <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
           <div class="vod-video-title">[MAIN] 2025 SVT 8TH FAN MEETING SEVENTEEN IN CARAT LAND DAY 1</div>
         </div>
-        <div class="vod-video">
+        <div class="vod-video" data-search="multi-view 2025 svt 9th fan meeting seventeen in carat land day 2">
           <iframe src="https://drive.google.com/file/d/1iABT5RG-6XiT7ysFexdaNa3m-KAtkhBW/preview" allowfullscreen></iframe>
           <div class="vod-video-title">[MULTI-VIEW] 2025 SVT 9TH FAN MEETING SEVENTEEN in CARAT LAND DAY 2</div>
         </div>
@@ -221,39 +250,74 @@
   </div>
 
   <script>
-    // Disable right-click context menu
+    // ========================
+    // SECURITY IMPLEMENTATIONS
+    // ========================
+    
+    // 1. Disable Developer Tools
     document.addEventListener('contextmenu', e => e.preventDefault());
-
-    // Disable drag and drop on page to avoid unexpected file loads
-    document.addEventListener('dragover', e => e.preventDefault());
-    document.addEventListener('drop', e => e.preventDefault());
-
-    // Disable common keyboard shortcuts for dev tools (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
     document.addEventListener('keydown', function(e) {
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-        (e.ctrlKey && e.key === 'U')
-      ) {
+      // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+          (e.ctrlKey && e.key === 'U')) {
         e.preventDefault();
       }
     });
 
-    // Search VOD filtering (sanitized by default since it only affects display)
-    const searchInput = document.getElementById('searchInput');
-    console.log('Search bar initialized');
-    
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-      console.log('Filtering for:', filter);
+    // 2. Anti-iframe Protection
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
 
-      document.querySelectorAll('.vod-video').forEach(vod => {
-        const title = vod.querySelector('.vod-video-title').textContent.toLowerCase();
-        console.log(title, '=>', title.includes(filter));
-        vod.style.display = title.includes(filter) ? 'flex' : 'none';
+    // 3. DOM Tampering Protection
+    setInterval(function() {
+      const protectedElements = document.querySelectorAll('.vod-video, .video-wrapper');
+      protectedElements.forEach(el => {
+        if (el.style.display === 'none' && !el.hasAttribute('data-search-matched')) {
+          el.style.display = '';
+        }
+      });
+    }, 2000);
+
+    // 4. Obfuscated Visit Counter
+    function _0x4a5e(_0x3d7c28,_0x4a5e9d){const _0x3d7c=_0x3d7c();return _0x4a5e=function(_0x4a5e9d,_0x2d8a3e){_0x4a5e9d=_0x4a5e9d-0x1a6;let _0x3d7c28=_0x3d7c[_0x4a5e9d];return _0x3d7c28;},_0x4a5e(_0x3d7c28,_0x4a5e9d);}(function(_0x2d8a3e,_0x3d7c28){const _0x4a5e9d=_0x4a5e,_0x3d7c=_0x2d8a3e();while(!![]){try{const _0x2d8a3e=-parseInt(_0x4a5e9d(0x1a6))/0x1+parseInt(_0x4a5e9d(0x1a8))/0x2*(-parseInt(_0x4a5e9d(0x1a7))/0x3+parseInt(_0x4a5e9d(0x1aa))/0x4+parseInt(_0x4a5e9d(0x1ab))/0x5*(-parseInt(_0x4a5e9d(0x1ad))/0x6)+parseInt(_0x4a5e9d(0x1ac))/0x7*(-parseInt(_0x4a5e9d(0x1a9))/0x8;if(_0x2d8a3e===_0x3d7c28)break;else _0x3d7c['push'](_0x3d7c['shift']());}catch(_0x4a5e9d){_0x3d7c['push'](_0x3d7c['shift']());}}}(_0x3d7c,0x5dc85));function _0x3d7c(){const _0x2d8a3e=['visitCount','localStorage','getItem','setItem','textContent','display','flex','none','forEach','querySelectorAll','[data-search]','toLowerCase','includes','input','searchInput','value','trim','vod-video','style','forEach','block','data-search-matched','removeAttribute','setAttribute'];_0x3d7c=function(){return _0x2d8a3e;};return _0x3d7c();}function updateVisitCounter(){const _0x4a5e9d=_0x4a5e,_0x2d8a3e=localStorage[_0x4a5e9d(0x1a7)](_0x4a5e9d(0x1a6))||0,_0x3d7c=Date[_0x4a5e9d(0x1a9)]()[_0x4a5e9d(0x1aa)](36)+Math[_0x4a5e9d(0x1ab)]()[_0x4a5e9d(0x1aa)](36)[_0x4a5e9d(0x1ac)](2);!localStorage[_0x4a5e9d(0x1a7)](_0x4a5e9d(0x1ad))&&(localStorage[_0x4a5e9d(0x1ae)](_0x4a5e9d(0x1ad),_0x3d7c),localStorage[_0x4a5e9d(0x1ae)](_0x4a5e9d(0x1a6),parseInt(_0x2d8a3e)+1),document[_0x4a5e9d(0x1af)](_0x4a5e9d(0x1b0))[_0x4a5e9d(0x1b1)]=_0x2d8a3e;}updateVisitCounter();
+
+    // ========================
+    // SEARCH FUNCTIONALITY
+    // ========================
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const vodItems = document.querySelectorAll('.vod-video');
+      
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim().toLowerCase();
+        
+        vodItems.forEach(item => {
+          const searchData = item.getAttribute('data-search').toLowerCase();
+          if (searchTerm === '' || searchData.includes(searchTerm)) {
+            item.style.display = 'flex';
+            item.setAttribute('data-search-matched', 'true');
+          } else {
+            item.style.display = 'none';
+            item.removeAttribute('data-search-matched');
+          }
+        });
       });
     });
+
+    // ========================
+    // ANTI-TAMPERING PROTECTION
+    // ========================
+    
+    const originalHTML = document.documentElement.innerHTML;
+    setInterval(function() {
+      if (document.documentElement.innerHTML !== originalHTML) {
+        document.documentElement.innerHTML = originalHTML;
+        location.reload();
+      }
+    }, 3000);
   </script>
 </body>
-</html>
-
+</html> can you remove the vic=sitor counter and fix the search button
