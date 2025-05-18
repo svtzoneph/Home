@@ -141,6 +141,23 @@
       margin-top: 10px;
     }
 
+    .visit-counter {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 188, 212, 0.8);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      z-index: 1000;
+    }
+
+    .visit-counter span {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
     @media (max-width: 900px) {
       .video-card {
         width: calc(50% - 30px);
@@ -180,6 +197,11 @@
 
   <!-- CONTENT (hidden initially) -->
   <div id="mainContent" style="display:none;">
+    <!-- Visit Counter -->
+    <div class="visit-counter">
+      <span id="visitCount">0</span> visitors
+    </div>
+
     <!-- Search Bar -->
     <div class="search-wrapper">
       <input type="text" id="searchInput" class="search-bar" placeholder="Search videos...">
@@ -260,12 +282,65 @@
         <iframe src="https://1drv.ms/v/c/68A69A4AFB11874B/IQQ4J0ZY5MRvTKxVxGaFDamlAR5xubBZWTjg4EpqW44HyTI" width="1920" height="1080" frameborder="0" scrolling="no" allowfullscreen></iframe>
           <div class="video-title">Episode 2-6</div>
         </div>
-        
       </div>
     </div>
   </div>
 
   <script>
+    // Security: Disable right-click and keyboard shortcuts
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+          (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+          (e.ctrlKey && e.key === 'u')) {
+        e.preventDefault();
+      }
+    });
+
+    // Anti-iframe protection
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
+
+    // View source protection
+    document.onkeypress = function(e) {
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+        return false;
+      }
+    };
+
+    // Periodic content check
+    setInterval(function() {
+      if (document.getElementById('lockScreen').style.display === 'none' && 
+          !sessionStorage.getItem('unlocked')) {
+        location.reload();
+      }
+    }, 3000);
+
+    // Visit counter function (unique visitors)
+    function updateVisitCounter() {
+      if (document.getElementById('mainContent').style.display === 'block') {
+        let count = localStorage.getItem('visitCount') || 0;
+        const visitorId = localStorage.getItem('visitorId');
+        
+        // Generate a unique ID if this is a new visitor
+        if (!visitorId) {
+          const newId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+          localStorage.setItem('visitorId', newId);
+          count = parseInt(count) + 1;
+          localStorage.setItem('visitCount', count);
+        }
+        
+        document.getElementById('visitCount').textContent = count;
+      }
+    }
+
+    // Unlock function
     function unlock() {
       const input = document.getElementById('passwordInput').value;
       const correctPassword = 'nana.tour.svt';
@@ -275,6 +350,8 @@
         document.getElementById('lockScreen').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
         errorMsg.textContent = '';
+        sessionStorage.setItem('unlocked', 'true');
+        updateVisitCounter(); // Update counter on unlock
       } else {
         errorMsg.textContent = 'Incorrect password. Try again.';
       }
