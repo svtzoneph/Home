@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Live/VOD | SEVENTEEN ZONE PH</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-  <script src="https://unpkg.com/video.js/dist/video.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' https://drive.google.com https://ok.ru;
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    frame-src https://drive.google.com https://ok.ru;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  " />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #121212;
-      color: #ffffff;
+      color: #fff;
     }
-
     .navbar {
       background-color: #111;
       padding: 15px 30px;
@@ -22,66 +27,62 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .navbar h2 {
       margin: 0;
       font-size: 1.3rem;
-      color: white;
     }
-
     .nav-links {
       display: flex;
       gap: 15px;
     }
-
     .nav-links a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
       font-size: 1rem;
+      transition: color 0.3s;
     }
-
     .nav-links a:hover {
       color: #00bcd4;
     }
-
     .container {
       padding: 40px 20px;
       text-align: center;
     }
-
     .video-title {
       font-size: 1.5rem;
-      margin-top: 10px;
-      margin-bottom: 40px;
+      margin: 10px 0 40px;
       font-weight: bold;
     }
-
     .video-wrapper {
+      position: relative;
       display: inline-block;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      background: black;
     }
-
+    video, iframe {
+      display: block;
+      width: 890px;
+      height: 450px;
+      border-radius: 10px;
+      background: black;
+    }
     .vod-section {
       margin-top: 60px;
     }
-
     .vod-title {
       font-size: 1.6rem;
       margin-bottom: 20px;
       font-weight: bold;
     }
-
     .vod-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
-
     .vod-video {
       width: 400px;
       height: 225px;
@@ -92,25 +93,21 @@
       flex-direction: column;
       align-items: center;
     }
-
     .vod-video iframe {
       width: 100%;
       height: 100%;
+      border-radius: 8px;
     }
-
     .vod-video-title {
-      color: #ffffff;
       margin-top: 10px;
       font-weight: bold;
-      text-align: center;
       font-size: 0.8rem;
+      text-align: center;
     }
-
     .search-container {
       text-align: center;
       margin-bottom: 40px;
     }
-
     .search-input {
       width: 300px;
       padding: 10px;
@@ -119,53 +116,54 @@
       font-size: 1rem;
       outline: none;
       background-color: #222;
-      color: white;
+      color: #fff;
     }
-
     .search-input::placeholder {
       color: #888;
-    }
-
-    #my-video {
-      width: 890px !important;
-      height: 450px !important;
     }
   </style>
 </head>
 <body>
-
   <div class="navbar">
     <h2>SEVENTEEN ZONE PH</h2>
     <div class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="picture.html">PICTURE</a>
-      <a href="announcement.html">ANNOUNCEMENT</a>
-      <a href="about.html">ABOUT SEVENTEEN</a>
-      <a href="live.html">LIVE/VOD</a>
-      <a href="counter.html">VIEWS COUNTER</a>
-      <a href="vault.html">VAULT</a> 
+      <a href="index.html" rel="noopener noreferrer">HOME</a>
+      <a href="picture.html" rel="noopener noreferrer">PICTURE</a>
+      <a href="announcement.html" rel="noopener noreferrer">ANNOUNCEMENT</a>
+      <a href="about.html" rel="noopener noreferrer">ABOUT SEVENTEEN</a>
+      <a href="live.html" rel="noopener noreferrer">LIVE/VOD</a>
+      <a href="counter.html" rel="noopener noreferrer">VIEWS COUNTER</a>
+      <a href="vault.html" rel="noopener noreferrer">VAULT</a>
     </div>
   </div>
 
   <div class="container">
     <div class="video-wrapper">
-      <!-- Updated Live HLS Player -->
-      <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="890" height="450">
-        <source src="http://192.168.1.10/hls/stream.m3u8" type="application/x-mpegURL">
-      </video>
+      <iframe
+        id="liveVideo"
+        src="https://ok.ru/videoembed/9454764367576"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; fullscreen"
+      ></iframe>
     </div>
+
     <div class="video-title">[RE-WATCH] SEVENTEEN JAPAN FAN MEETING 'HOLIDAY' SAITAMA</div>
 
-    <!-- Search Bar -->
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Search VOD...">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search VOD..."
+        autocomplete="off"
+        spellcheck="false"
+      />
     </div>
 
-    <!-- VOD SECTION -->
     <div class="vod-section">
       <div class="vod-title">VOD</div>
       <div class="vod-grid" id="vodGrid">
-        <!-- VOD ENTRIES (unchanged, all 13 kept) -->
         <div class="vod-video">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 1</div>
@@ -211,7 +209,7 @@
           <div class="vod-video-title">SEVETEEN WORLD TOUR BE THE SUN IN SEOUL DAY 1</div>
         </div>
         <div class="vod-video">
-          <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
+         <iframe src="https://drive.google.com/file/d/1JQDhOyEQs42uLp15Ia1tgNJXiWe8StI8/preview" allowfullscreen></iframe>
           <div class="vod-video-title">[MAIN] 2025 SVT 8TH FAN MEETING SEVENTEEN IN CARAT LAND DAY 1</div>
         </div>
         <div class="vod-video">
@@ -223,22 +221,39 @@
   </div>
 
   <script>
-    var player = videojs('my-video');
-    if (Hls.isSupported()) {
-      var hls = new Hls();
-      hls.loadSource('http://192.168.1.10/hls/stream.m3u8');
-      hls.attachMedia(player.tech().el());
-    }
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', e => e.preventDefault());
 
+    // Disable drag and drop on page to avoid unexpected file loads
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('drop', e => e.preventDefault());
+
+    // Disable common keyboard shortcuts for dev tools (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    // Search VOD filtering (sanitized by default since it only affects display)
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function () {
+    console.log('Search bar initialized');
+    
+    searchInput.addEventListener('input', () => {
       const filter = searchInput.value.toLowerCase();
-      const vods = document.querySelectorAll('.vod-video');
-      vods.forEach(vod => {
+      console.log('Filtering for:', filter);
+
+      document.querySelectorAll('.vod-video').forEach(vod => {
         const title = vod.querySelector('.vod-video-title').textContent.toLowerCase();
+        console.log(title, '=>', title.includes(filter));
         vod.style.display = title.includes(filter) ? 'flex' : 'none';
       });
     });
   </script>
 </body>
 </html>
+
