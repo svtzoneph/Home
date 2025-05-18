@@ -14,6 +14,7 @@
     form-action 'self';
   " />
   <style>
+    /* Your existing CSS styles remain unchanged */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -121,7 +122,6 @@
     .search-input::placeholder {
       color: #888;
     }
-    /* Responsive adjustments */
     @media (max-width: 950px) {
       video, iframe {
         width: 100%;
@@ -136,6 +136,7 @@
   </style>
 </head>
 <body>
+  <!-- Your existing HTML structure remains unchanged -->
   <div class="navbar">
     <h2>SEVENTEEN ZONE PH</h2>
     <div class="nav-links">
@@ -176,7 +177,7 @@
     <div class="vod-section">
       <div class="vod-title">VOD</div>
       <div class="vod-grid" id="vodGrid">
-        <div class="vod-video" data-search="seventeen tour again follow to incheon day 1">
+         <div class="vod-video" data-search="seventeen tour again follow to incheon day 1">
           <iframe src="https://drive.google.com/file/d/12dbX0cn1B8ptqvS_jnd_0jD5x1q3eHEV/preview" allowfullscreen></iframe>
           <div class="vod-video-title">SEVENTEEN TOUR AGAIN FOLLOW TO INCHEON DAY 1</div>
         </div>
@@ -228,6 +229,7 @@
           <iframe src="https://drive.google.com/file/d/1iABT5RG-6XiT7ysFexdaNa3m-KAtkhBW/preview" allowfullscreen></iframe>
           <div class="vod-video-title">[MULTI-VIEW] 2025 SVT 9TH FAN MEETING SEVENTEEN in CARAT LAND DAY 2</div>
         </div>
+        <!-- Your VOD items remain unchanged -->
       </div>
     </div>
   </div>
@@ -253,15 +255,21 @@
       window.top.location = window.self.location;
     }
 
-    // 3. DOM Tampering Protection
-    setInterval(function() {
-      const protectedElements = document.querySelectorAll('.vod-video, .video-wrapper');
-      protectedElements.forEach(el => {
-        if (el.style.display === 'none' && !el.hasAttribute('data-search-matched')) {
-          el.style.display = '';
+    // 3. Modified DOM Tampering Protection (won't cause constant refreshing)
+    document.addEventListener('DOMContentLoaded', function() {
+      const vodGrid = document.getElementById('vodGrid');
+      const originalVODContent = vodGrid.innerHTML;
+      
+      setInterval(function() {
+        // Only check if the VOD grid structure has been tampered with
+        const currentVODContent = vodGrid.innerHTML;
+        
+        // Check if the basic structure is intact (number of children)
+        if (vodGrid.children.length !== 13) { // Update this number to match your actual VOD items count
+          vodGrid.innerHTML = originalVODContent;
         }
-      });
-    }, 2000);
+      }, 5000); // Check every 5 seconds instead of 3
+    });
 
     // ========================
     // SEARCH FUNCTIONALITY
@@ -286,18 +294,6 @@
         });
       });
     });
-
-    // ========================
-    // ANTI-TAMPERING PROTECTION
-    // ========================
-    
-    const originalHTML = document.documentElement.innerHTML;
-    setInterval(function() {
-      if (document.documentElement.innerHTML !== originalHTML) {
-        document.documentElement.innerHTML = originalHTML;
-        location.reload();
-      }
-    }, 3000);
   </script>
 </body>
 </html>
