@@ -75,7 +75,7 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 
   <!-- NAVBAR -->
   <div class="navbar">
@@ -95,11 +95,28 @@
   <div class="container">
     <!-- Category Buttons with Links -->
     <div class="category-buttons">
-      <a href="nana.html" class="btn-link">NANA TOUR</a>
-      <a href="in-the-soop-2.html" class="btn-link">IN THE SOOP 2</a>
-      <a href="nana-bnb.html" class="btn-link">NANA BNB</a>
+      <a href="nana.html" class="btn-link" target="_blank">NANA TOUR</a>
+      <a href="in-the-soop-2.html" class="btn-link" target="_blank">IN THE SOOP 2</a>
+      <a href="nana-bnb.html" class="btn-link" target="_blank">NANA BNB</a>
     </div>
   </div>
+
+  <!-- Protection Script -->
+  <script>
+    // Disable right-click menu
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Block F12, Ctrl+Shift+I, Ctrl+U
+    document.addEventListener('keydown', function(event) {
+      if (
+        event.key === 'F12' ||
+        (event.ctrlKey && event.shiftKey && event.key === 'I') ||
+        (event.ctrlKey && event.key.toLowerCase() === 'u')
+      ) {
+        event.preventDefault();
+      }
+    });
+  </script>
 
 </body>
 </html>
